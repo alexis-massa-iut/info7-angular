@@ -1,9 +1,57 @@
 <div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
-  </div>
-  <button type="button" (click)="goBack()">go back</button>
+  <h2>Details of hero {{ hero.id }} : {{ hero.name | uppercase }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <label for="hero-name">Hero name: </label>
+        </th>
+        <th>
+          <input
+            id="hero-name"
+            [(ngModel)]="hero.name"
+            placeholder="Hero name"
+          />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><label for="hero-hp">Hero hp: </label></td>
+        <td><input id="hero-hp" [(ngModel)]="hero.hp" placeholder="10" /></td>
+      </tr>
+      <tr>
+        <td><label for="hero-damage">Hero damage: </label></td>
+        <td>
+          <input id="hero-damage" [(ngModel)]="hero.damage" placeholder="10" />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="hero-dexterity">Hero dexterity: </label></td>
+        <td>
+          <input
+            id="hero-dexterity"
+            [(ngModel)]="hero.dexterity"
+            placeholder="10"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td><label for="hero-attack">Hero attack: </label></td>
+        <td>
+          <input id="hero-attack" [(ngModel)]="hero.attack" placeholder="10" />
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <button type="button" (click)="goBack()">go back</button>
+        </td>
+        <td>
+          <button type="button" (click)="save()">Save</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </div>
