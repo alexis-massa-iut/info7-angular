@@ -1,8 +1,14 @@
-export interface Hero {
-  id: number;
-  name: string;
-  hp: number,
-  damage: number,
-  dexterity: number,
-  attack: number
+import { Serializable } from "./serializable";
+
+export class Hero extends Serializable {
+  id?: string;
+  name?: string;
+  hp?: number;
+  damage?: number;
+  dexterity?: number;
+  attack?: number;
+
+  constructor() {
+    super();
+  }
 }
