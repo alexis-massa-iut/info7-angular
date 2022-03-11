@@ -99,10 +99,7 @@ export class HeroService {
    * @param hero
    */
   addHero(hero: Hero) {
-
     this.db.collection(HeroService.url).add(hero.toJSON());
-    //this.db.collection(HeroService.url).add(JSON.stringify(hero));
-    //this.db.collection<JSON>(HeroService.url).add(Object.assign({}, hero));
   }
 
   /**
@@ -110,24 +107,21 @@ export class HeroService {
    * @param hero
    */
   updateHero(hero: Hero) {
-
-    // Update document
     if (hero.id != undefined) {
       this.getHeroDocument(hero.id).update(hero.toJSON());
     }
-
-    //this.getHeroDocument(id).update(JSON.stringify(hero));
-    //this.getHeroDocument(id).update(Object.assign({}, hero));
   }
 
+  /**
+   * Suppression du héro sur Firebase
+   * @param hero
+   */
   deleteHero(hero: Hero) {
-
     // Delete the document
     if (hero.id != undefined) {
       this.getHeroDocument(hero.id).delete();
     }
   }
-
 
   /**
    * Transformation du document reçu en un objet de type Hero

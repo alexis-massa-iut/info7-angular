@@ -34,6 +34,6 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    // SAVE HERO DETAILS
+    // UPDATE HERO DETAILS
   }
 }
