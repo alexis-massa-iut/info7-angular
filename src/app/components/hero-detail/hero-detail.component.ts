@@ -4,6 +4,7 @@ import { HeroService } from '../../services/hero/hero.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { isEmpty } from '@firebase/util';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,7 +14,7 @@ import { Location } from '@angular/common';
 
 export class HeroDetailComponent implements OnInit {
   hero?: Hero = new Hero();
-  maxStat: Number = 40;
+  maxStat: number = 40;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,7 +57,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   // Get total points assigned
-  getTotalStats(): number | boolean {
+  getTotalStats(): number {
     let totalStats: number = 0;
     if (this.hero) {
       if (this.hero.attack) totalStats += this.hero.attack;
@@ -64,9 +65,8 @@ export class HeroDetailComponent implements OnInit {
       if (this.hero.damage) totalStats += this.hero.damage;
       if (this.hero.dexterity) totalStats += this.hero.dexterity;
       return totalStats;
-    } else {
-      return false;
     }
+    return 0;
   }
 
   /**
@@ -112,5 +112,16 @@ export class HeroDetailComponent implements OnInit {
     if (this.hero.damage < 1) return false; // Too little damage
 
     return true; // No error
+  }
+
+  /**
+   * Check if name is correct
+   * @return true if name is correct, false if not.
+   */
+  checkName(): boolean {
+    // Name is empty
+    if (!this.hero) return true; // default value
+    if (this.hero.name == '') return false; // name is empty
+    return true;
   }
 }
