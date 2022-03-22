@@ -37,4 +37,8 @@ export class HeroesComponent implements OnInit {
     // Save hero to DB if name doesn't exist already
     if (!exists) this.heroService.addHero(hero);
   }
+
+  deleteHero(hero: Hero): void {
+    this.heroService.deleteHero(hero);
+  }
 }

@@ -18,38 +18,153 @@
     <tbody>
       <tr>
         <td><label for="hero-hp">Hero hp: </label></td>
-        <td><input id="hero-hp" [(ngModel)]="hero.hp" placeholder="10" /></td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('hp', hero.hp - 1)"
+            data-type="minus"
+            data-field="hero-hp"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="hero-hp"
+            name="hero-hp"
+            type="number"
+            [(ngModel)]="hero.hp"
+            placeholder="10"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('hp', hero.hp + 1)"
+            data-type="plus"
+            data-field="hero-hp"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
       </tr>
       <tr>
         <td><label for="hero-damage">Hero damage: </label></td>
         <td>
-          <input id="hero-damage" [(ngModel)]="hero.damage" placeholder="10" />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('damage', hero.damage - 1)"
+            data-type="minus"
+            data-field="hero-damage"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="hero-damage"
+            name="hero-damage"
+            type="number"
+            [(ngModel)]="hero.damage"
+            placeholder="10"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('damage', hero.damage + 1)"
+            data-type="plus"
+            data-field="hero-damage"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
         </td>
       </tr>
       <tr>
         <td><label for="hero-dexterity">Hero dexterity: </label></td>
         <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('dexterity', hero.dexterity - 1)"
+            data-type="minus"
+            data-field="hero-dexterity"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
           <input
             id="hero-dexterity"
+            name="hero-dexterity"
+            type="number"
             [(ngModel)]="hero.dexterity"
             placeholder="10"
           />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('dexterity', hero.dexterity + 1)"
+            data-type="plus"
+            data-field="hero-dexterity"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
         </td>
       </tr>
       <tr>
         <td><label for="hero-attack">Hero attack: </label></td>
         <td>
-          <input id="hero-attack" [(ngModel)]="hero.attack" placeholder="10" />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('attack', hero.attack - 1)"
+            data-type="minus"
+            data-field="hero-attack"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="hero-attack"
+            name="hero-attack"
+            type="number"
+            [(ngModel)]="hero.attack"
+            placeholder="10"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('attack', hero.attack + 1)"
+            data-type="plus"
+            data-field="hero-attack"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            Points assignés :
+            <strong
+              [ngClass]="{
+                'text-success': this.checkStats() == true,
+                'text-danger': this.checkStats() == false
+              }"
+              >{{ this.getTotalStats() }}</strong
+            >/{{ this.maxStat }}
+          </p>
         </td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td>
-          <button type="button" (click)="goBack()">go back</button>
+          <button class="btn" type="button" (click)="goBack()">go back</button>
         </td>
         <td>
-          <button type="button" (click)="save()">Save</button>
+          <button
+            class="btn"
+            [disabled]="this.checkStats() == false"
+            type="button"
+            (click)="save()"
+          >
+            Save
+          </button>
         </td>
       </tr>
     </tfoot>
