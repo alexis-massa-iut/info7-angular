@@ -11,6 +11,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { environment } from '../environments/environment';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { WeaponsComponent } from './components/weapons/weapons.component';
+import { WeaponDetailComponent } from './components/weapon-detail/weapon-detail.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
     DashboardComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    WeaponsComponent,
+    WeaponDetailComponent
   ],
   bootstrap: [AppComponent]
 })

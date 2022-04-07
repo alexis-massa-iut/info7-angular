@@ -1,0 +1,174 @@
+<div *ngIf="weapon">
+  <h2>Details of weapon {{ weapon.name }} : {{ weapon.name | uppercase }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <label for="weapon-name">Weapon name: </label>
+        </th>
+        <th>
+          <input
+            id="weapon-name"
+            [(ngModel)]="weapon.name"
+            placeholder="Weapon name"
+          />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><label for="weapon-hp">Weapon hp: </label></td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('hp', weapon.hp - 1)"
+            data-type="minus"
+            data-field="weapon-hp"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="weapon-hp"
+            name="weapon-hp"
+            type="number"
+            [(ngModel)]="weapon.hp"
+            placeholder="5"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('hp', weapon.hp + 1)"
+            data-type="plus"
+            data-field="weapon-hp"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="weapon-damage">Weapon damage: </label></td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('damage', weapon.damage - 1)"
+            data-type="minus"
+            data-field="weapon-damage"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="weapon-damage"
+            name="weapon-damage"
+            type="number"
+            [(ngModel)]="weapon.damage"
+            placeholder="5"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('damage', weapon.damage + 1)"
+            data-type="plus"
+            data-field="weapon-damage"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="weapon-dexterity">Weapon dexterity: </label></td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('dexterity', weapon.dexterity - 1)"
+            data-type="minus"
+            data-field="weapon-dexterity"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="weapon-dexterity"
+            name="weapon-dexterity"
+            type="number"
+            [(ngModel)]="weapon.dexterity"
+            placeholder="5"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('dexterity', weapon.dexterity + 1)"
+            data-type="plus"
+            data-field="weapon-dexterity"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="weapon-attack">Weapon attack: </label></td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('attack', weapon.attack - 1)"
+            data-type="minus"
+            data-field="weapon-attack"
+          >
+            <i class="bi bi-dash-square-fill"></i>
+          </button>
+          <input
+            id="weapon-attack"
+            name="weapon-attack"
+            type="number"
+            [(ngModel)]="weapon.attack"
+            placeholder="5"
+          />
+          <button
+            type="button"
+            class="btn"
+            (click)="changeStat('attack', weapon.attack + 1)"
+            data-type="plus"
+            data-field="weapon-attack"
+          >
+            <i class="bi bi-plus-square-fill"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            Points assignés :
+            <strong
+              [ngClass]="{ 
+                'text-success': this.checkStats() == true,
+                'text-danger': this.checkStats() == false
+              }"
+              >{{ this.getTotalStats() }}</strong
+            >/{{ this.maxStat }} (Restants :
+            {{ this.maxStat - this.getTotalStats() }}
+            )
+          </p>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <button class="btn" type="button" (click)="goBack()">go back</button>
+        </td>
+        <td>
+          <button
+            class="btn"
+            [disabled]="!(this.checkStats() && this.checkName())"
+            type="button"
+            (click)="save()"
+          >
+            Save
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
