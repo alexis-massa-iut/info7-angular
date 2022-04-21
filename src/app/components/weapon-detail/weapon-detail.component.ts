@@ -74,6 +74,7 @@ export class WeaponDetailComponent implements OnInit {
    * @param newValue new value of changedStat
    */
   changeStat(changedStat: string, newValue: number): void {
+    if (newValue < -5 || newValue > 5) return;
     if (this.weapon != undefined) {
       switch (changedStat) {
         case "attack":
@@ -101,7 +102,7 @@ export class WeaponDetailComponent implements OnInit {
   checkStats(): boolean {
     if (!this.weapon) return true; // If weapon deosn't exist (then default values)
 
-    if (Number(this.getTotalStats()) > this.maxStat) return false; // Too many points assigned
+    if (Number(this.getTotalStats()) != this.maxStat) return false; // Too many points assigned
 
     //* These should never happen
     if (this.weapon.attack < -5 || this.weapon.attack > 5) return false; // Too little attack
