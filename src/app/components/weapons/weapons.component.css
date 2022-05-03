@@ -1,20 +1,20 @@
-/* HeroesComponent's private CSS styles */
-.heroes {
+/* WeaponsComponent's private CSS styles */
+.weapons {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 20em;
 }
-.heroes li {
+.weapons li {
   position: relative;
   cursor: pointer;
 }
 
-.heroes li:hover {
+.weapons li:hover {
   left: 0.1em;
 }
 
-.heroes a {
+.weapons a {
   color: #333;
   text-decoration: none;
   background-color: #eee;
@@ -26,17 +26,17 @@
   width: 100%;
 }
 
-.heroes a:hover {
+.weapons a:hover {
   color: #2c3a41;
   background-color: #e6e6e6;
 }
 
-.heroes a:active {
+.weapons a:active {
   background-color: #525252;
   color: #fafafa;
 }
 
-.heroes .badge {
+.weapons .badge {
   display: inline-block;
   font-size: small;
   color: white;

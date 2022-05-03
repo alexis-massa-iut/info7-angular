@@ -8,5 +8,5 @@ export const environment = {
     authDomain: 'tourofheroes-ff1fc.firebaseapp.com',
     messagingSenderId: '294476267965',
   },
-  production: true
+  production: true,
 };

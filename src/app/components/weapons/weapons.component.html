@@ -1,0 +1,14 @@
+<h2>My Weapons</h2>
+<h3>Create a Weapon</h3>
+<input id="weapon-name" [(ngModel)]="nameWeapon" placeholder="Weapon name" />
+<button type="button" (click)="createWeapon()">Add</button>
+<ul class="weapons">
+  <li *ngFor="let weapon of weapons">
+    <a routerLink="/weapon-detail/{{ weapon.id }}">
+      <span class="badge">{{ weapon.id }}</span> {{ weapon.name }}
+    </a>
+    <button class="delete">
+      <i (click)="deleteWeapon(weapon)" class="bi bi-trash-fill"></i>
+    </button>
+  </li>
+</ul>

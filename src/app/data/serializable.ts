@@ -1,7 +1,6 @@
-import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
+import { JsonArray } from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 
 export class Serializable {
-
   fromJSON(json: JsonArray) {
     for (const propName in json) {
       if (json.hasOwnProperty(propName)) {

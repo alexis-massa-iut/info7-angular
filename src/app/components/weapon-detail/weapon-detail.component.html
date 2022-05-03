@@ -1,136 +1,136 @@
-<div *ngIf="hero">
-  <h2>Details of hero {{ hero.id }} : {{ hero.name | uppercase }}</h2>
+<div *ngIf="weapon">
+  <h2>Details of weapon {{ weapon.name }} : {{ weapon.name | uppercase }}</h2>
   <table>
     <thead>
       <tr>
         <th>
-          <label for="hero-name">Hero name: </label>
+          <label for="weapon-name">Weapon name: </label>
         </th>
         <th>
           <input
-            id="hero-name"
-            [(ngModel)]="hero.name"
-            placeholder="Hero name"
+            id="weapon-name"
+            [(ngModel)]="weapon.name"
+            placeholder="Weapon name"
           />
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><label for="hero-hp">Hero hp: </label></td>
+        <td><label for="weapon-hp">Weapon hp: </label></td>
         <td>
           <button
             type="button"
             class="btn"
-            (click)="changeStat('hp', hero.hp - 1)"
+            (click)="changeStat('hp', weapon.hp - 1)"
             data-type="minus"
-            data-field="hero-hp"
+            data-field="weapon-hp"
           >
             <i class="bi bi-dash-square-fill"></i>
           </button>
           <input
-            id="hero-hp"
-            name="hero-hp"
+            id="weapon-hp"
+            name="weapon-hp"
             type="number"
-            [(ngModel)]="hero.hp"
-            placeholder="10"
+            [(ngModel)]="weapon.hp"
+            placeholder="0"
           />
           <button
             type="button"
             class="btn"
-            (click)="changeStat('hp', hero.hp + 1)"
+            (click)="changeStat('hp', weapon.hp + 1)"
             data-type="plus"
-            data-field="hero-hp"
+            data-field="weapon-hp"
           >
             <i class="bi bi-plus-square-fill"></i>
           </button>
         </td>
       </tr>
       <tr>
-        <td><label for="hero-damage">Hero damage: </label></td>
+        <td><label for="weapon-damage">Weapon damage: </label></td>
         <td>
           <button
             type="button"
             class="btn"
-            (click)="changeStat('damage', hero.damage - 1)"
+            (click)="changeStat('damage', weapon.damage - 1)"
             data-type="minus"
-            data-field="hero-damage"
+            data-field="weapon-damage"
           >
             <i class="bi bi-dash-square-fill"></i>
           </button>
           <input
-            id="hero-damage"
-            name="hero-damage"
+            id="weapon-damage"
+            name="weapon-damage"
             type="number"
-            [(ngModel)]="hero.damage"
-            placeholder="10"
+            [(ngModel)]="weapon.damage"
+            placeholder="0"
           />
           <button
             type="button"
             class="btn"
-            (click)="changeStat('damage', hero.damage + 1)"
+            (click)="changeStat('damage', weapon.damage + 1)"
             data-type="plus"
-            data-field="hero-damage"
+            data-field="weapon-damage"
           >
             <i class="bi bi-plus-square-fill"></i>
           </button>
         </td>
       </tr>
       <tr>
-        <td><label for="hero-dexterity">Hero dexterity: </label></td>
+        <td><label for="weapon-dexterity">Weapon dexterity: </label></td>
         <td>
           <button
             type="button"
             class="btn"
-            (click)="changeStat('dexterity', hero.dexterity - 1)"
+            (click)="changeStat('dexterity', weapon.dexterity - 1)"
             data-type="minus"
-            data-field="hero-dexterity"
+            data-field="weapon-dexterity"
           >
             <i class="bi bi-dash-square-fill"></i>
           </button>
           <input
-            id="hero-dexterity"
-            name="hero-dexterity"
+            id="weapon-dexterity"
+            name="weapon-dexterity"
             type="number"
-            [(ngModel)]="hero.dexterity"
-            placeholder="10"
+            [(ngModel)]="weapon.dexterity"
+            placeholder="0"
           />
           <button
             type="button"
             class="btn"
-            (click)="changeStat('dexterity', hero.dexterity + 1)"
+            (click)="changeStat('dexterity', weapon.dexterity + 1)"
             data-type="plus"
-            data-field="hero-dexterity"
+            data-field="weapon-dexterity"
           >
             <i class="bi bi-plus-square-fill"></i>
           </button>
         </td>
       </tr>
       <tr>
-        <td><label for="hero-attack">Hero attack: </label></td>
+        <td><label for="weapon-attack">Weapon attack: </label></td>
         <td>
           <button
             type="button"
             class="btn"
-            (click)="changeStat('attack', hero.attack - 1)"
+            (click)="changeStat('attack', weapon.attack - 1)"
             data-type="minus"
-            data-field="hero-attack"
+            data-field="weapon-attack"
           >
             <i class="bi bi-dash-square-fill"></i>
           </button>
           <input
-            id="hero-attack"
-            name="hero-attack"
+            id="weapon-attack"
+            name="weapon-attack"
             type="number"
-            [(ngModel)]="hero.attack"
-            placeholder="10"
+            [(ngModel)]="weapon.attack"
+            placeholder="0"
           />
           <button
             type="button"
             class="btn"
-            (click)="changeStat('attack', hero.attack + 1)"
+            (click)="changeStat('attack', weapon.attack + 1)"
             data-type="plus"
-            data-field="hero-attack"
+            data-field="weapon-attack"
           >
             <i class="bi bi-plus-square-fill"></i>
           </button>
