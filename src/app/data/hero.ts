@@ -7,7 +7,7 @@ export class Hero extends Serializable {
   damage: number = 10;
   dexterity: number = 10;
   attack: number = 10;
-
+  id_weapon?: string;
   constructor() {
     super();
   }
