@@ -2,26 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Weapon } from '../../data/weapon';
 import { WeaponService } from '../../services/weapon/weapon.service';
 
-
 @Component({
   selector: 'app-weapons',
   templateUrl: './weapons.component.html',
-  styleUrls: ['./weapons.component.css']
+  styleUrls: ['./weapons.component.css'],
 })
 export class WeaponsComponent implements OnInit {
   weapons: Weapon[] = [];
 
-  nameWeapon: string = "";
+  nameWeapon: string = '';
 
-  constructor(private weaponService: WeaponService) { }
+  constructor(private weaponService: WeaponService) {}
 
   ngOnInit(): void {
     this.getWeapons();
   }
 
   getWeapons(): void {
-    this.weaponService.getWeapons()
-      .subscribe(weapons => this.weapons = weapons);
+    this.weaponService
+      .getWeapons()
+      .subscribe((weapons) => (this.weapons = weapons));
   }
 
   createWeapon(): void {
@@ -29,7 +29,7 @@ export class WeaponsComponent implements OnInit {
     let exists = false;
     weapon.name = this.nameWeapon;
     // If name already taken : exit
-    this.weapons.forEach(h => {
+    this.weapons.forEach((h) => {
       if (h.name === weapon.name) {
         exists = true;
       }

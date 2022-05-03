@@ -9,9 +9,8 @@ import { isEmpty } from '@firebase/util';
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css']
+  styleUrls: ['./hero-detail.component.css'],
 })
-
 export class HeroDetailComponent implements OnInit {
   hero?: Hero = new Hero();
   maxStat: number = 40;
@@ -20,7 +19,7 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getHero();
@@ -31,7 +30,9 @@ export class HeroDetailComponent implements OnInit {
    * @returns void
    */
   goBack(): void {
-    if (confirm('Attention : Toute modification non sauvegardée sera supprimée !'))
+    if (
+      confirm('Attention : Toute modification non sauvegardée sera supprimée !')
+    )
       this.location.back();
   }
 
@@ -42,8 +43,7 @@ export class HeroDetailComponent implements OnInit {
   getHero(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null)
-      this.heroService.getHero(id)
-        .subscribe(hero => this.hero = hero);
+      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
   }
 
   /**
@@ -52,8 +52,7 @@ export class HeroDetailComponent implements OnInit {
    */
   save(): void {
     // UPDATE HERO DETAILS
-    if (this.hero)
-      this.heroService.updateHero(this.hero);
+    if (this.hero) this.heroService.updateHero(this.hero);
   }
 
   // Get total points assigned
@@ -78,16 +77,16 @@ export class HeroDetailComponent implements OnInit {
     if (newValue < 1) return;
     if (this.hero != undefined) {
       switch (changedStat) {
-        case "attack":
+        case 'attack':
           if (this.hero.attack) this.hero.attack = newValue;
           break;
-        case "dexterity":
+        case 'dexterity':
           if (this.hero.dexterity) this.hero.dexterity = newValue;
           break;
-        case "hp":
+        case 'hp':
           if (this.hero.hp) this.hero.hp = newValue;
           break;
-        case "damage":
+        case 'damage':
           if (this.hero.damage) this.hero.damage = newValue;
           break;
       }

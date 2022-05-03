@@ -146,9 +146,8 @@
                 'text-danger': this.checkStats() == false
               }"
               >{{ this.getTotalStats() }}</strong
-            >/{{ this.maxStat }} (Restants : {{
-              this.maxStat - this.getTotalStats()
-            }}
+            >/{{ this.maxStat }} (Restants :
+            {{ this.maxStat - this.getTotalStats() }}
             )
           </p>
         </td>

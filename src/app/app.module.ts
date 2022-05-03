@@ -9,8 +9,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { environment } from '../environments/environment';
-import {AngularFireModule} from '@angular/fire/compat';
-import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { WeaponsComponent } from './components/weapons/weapons.component';
 import { WeaponDetailComponent } from './components/weapon-detail/weapon-detail.component';
 
@@ -20,7 +20,7 @@ import { WeaponDetailComponent } from './components/weapon-detail/weapon-detail.
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
   declarations: [
     AppComponent,
@@ -29,8 +29,8 @@ import { WeaponDetailComponent } from './components/weapon-detail/weapon-detail.
     HeroDetailComponent,
     MessagesComponent,
     WeaponsComponent,
-    WeaponDetailComponent
+    WeaponDetailComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

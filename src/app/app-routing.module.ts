@@ -6,18 +6,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WeaponsComponent } from './components/weapons/weapons.component';
 import { WeaponDetailComponent } from './components/weapon-detail/weapon-detail.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'heroes', component: HeroesComponent },
   { path: 'hero-detail/:id', component: HeroDetailComponent },
   { path: 'weapons', component: WeaponsComponent },
-  { path: 'weapon-detail/:id', component: WeaponDetailComponent }
+  { path: 'weapon-detail/:id', component: WeaponDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

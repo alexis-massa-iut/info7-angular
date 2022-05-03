@@ -8,9 +8,8 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-weapon-detail',
   templateUrl: './weapon-detail.component.html',
-  styleUrls: ['./weapon-detail.component.css']
+  styleUrls: ['./weapon-detail.component.css'],
 })
-
 export class WeaponDetailComponent implements OnInit {
   weapon?: Weapon = new Weapon();
   maxStat: number = 0;
@@ -19,7 +18,7 @@ export class WeaponDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private weaponService: WeaponService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getWeapon();
@@ -30,7 +29,9 @@ export class WeaponDetailComponent implements OnInit {
    * @returns void
    */
   goBack(): void {
-    if (confirm('Attention : Toute modification non sauvegardée sera supprimée !'))
+    if (
+      confirm('Attention : Toute modification non sauvegardée sera supprimée !')
+    )
       this.location.back();
   }
 
@@ -41,8 +42,9 @@ export class WeaponDetailComponent implements OnInit {
   getWeapon(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null)
-      this.weaponService.getWeapon(id)
-        .subscribe(weapon => this.weapon = weapon);
+      this.weaponService
+        .getWeapon(id)
+        .subscribe((weapon) => (this.weapon = weapon));
   }
 
   /**
@@ -51,8 +53,7 @@ export class WeaponDetailComponent implements OnInit {
    */
   save(): void {
     // UPDATE HERO DETAILS
-    if (this.weapon)
-      this.weaponService.updateWeapon(this.weapon);
+    if (this.weapon) this.weaponService.updateWeapon(this.weapon);
   }
 
   // Get total points assigned

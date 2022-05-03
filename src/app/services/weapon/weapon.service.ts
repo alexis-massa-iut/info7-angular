@@ -4,41 +4,42 @@ import { Observable, of } from 'rxjs';
 import { Weapon } from '../../data/weapon';
 import { MessageService } from '../message/message.service';
 
-import { map } from "rxjs/operators";
-import { JsonArray } from "@angular/compiler-cli/ngcc/src/packages/entry_point";
+import { map } from 'rxjs/operators';
+import { JsonArray } from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {
   Action,
   AngularFirestore,
   AngularFirestoreDocument,
   DocumentChangeAction,
-  DocumentSnapshot
-} from "@angular/fire/compat/firestore";
+  DocumentSnapshot,
+} from '@angular/fire/compat/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WeaponService {
-
   // URL d'accès aux documents sur Firebase
   private static url = 'weapons';
 
-  constructor(private messageService: MessageService, private db: AngularFirestore) {
-  }
+  constructor(
+    private messageService: MessageService,
+    private db: AngularFirestore
+  ) {}
 
   /**
    * Récupération de la liste des héros
    */
   getWeapons(): Observable<Weapon[]> {
-
     //
     this.messageService.add('WeaponService: fetched weapons');
 
     //
-    return this.db.collection<JsonArray>(WeaponService.url)
+    return this.db
+      .collection<JsonArray>(WeaponService.url)
       .snapshotChanges()
       .pipe(
-        map(documents => {
-          return documents.map(document => {
+        map((documents) => {
+          return documents.map((document) => {
             return this.transformDocumentChangeActionToWeapon(document);
           });
         })
@@ -49,16 +50,16 @@ export class WeaponService {
    * Récupération des 3 premiers héros
    */
   getWeaponsTop3(): Observable<Weapon[]> {
-
     //
     this.messageService.add('WeaponService: fetched weapons');
 
     //
-    return this.db.collection<JsonArray>(WeaponService.url, ref => ref.limit(3))
+    return this.db
+      .collection<JsonArray>(WeaponService.url, (ref) => ref.limit(3))
       .snapshotChanges()
       .pipe(
-        map(documents => {
-          return documents.map(document => {
+        map((documents) => {
+          return documents.map((document) => {
             return this.transformDocumentChangeActionToWeapon(document);
           });
         })
@@ -71,7 +72,6 @@ export class WeaponService {
    * @private
    */
   private getWeaponDocument(id: string): AngularFirestoreDocument<JsonArray> {
-
     // return document
     return this.db.doc<JsonArray>(WeaponService.url + `/` + id);
   }
@@ -81,14 +81,14 @@ export class WeaponService {
    * @param id
    */
   getWeapon(id: string): Observable<Weapon | undefined> {
-
     //
     this.messageService.add(`WeaponService: fetched weapon id=${id}`);
 
     // Return weapon observable
-    return this.getWeaponDocument(id).snapshotChanges()
+    return this.getWeaponDocument(id)
+      .snapshotChanges()
       .pipe(
-        map(document => {
+        map((document) => {
           return this.transformDocumentSnapshotToWeapon(id, document);
         })
       );
@@ -128,8 +128,9 @@ export class WeaponService {
    * @param a
    * @private
    */
-  private transformDocumentChangeActionToWeapon(a: DocumentChangeAction<JsonArray>): Weapon {
-
+  private transformDocumentChangeActionToWeapon(
+    a: DocumentChangeAction<JsonArray>
+  ): Weapon {
     // Get document data
     const data = a.payload.doc.data();
 
@@ -147,8 +148,10 @@ export class WeaponService {
    * Transformation du document reçu en un objet de type Weapon
    * @private
    */
-  private transformDocumentSnapshotToWeapon(id: string, document: Action<DocumentSnapshot<JsonArray>>): Weapon | undefined {
-
+  private transformDocumentSnapshotToWeapon(
+    id: string,
+    document: Action<DocumentSnapshot<JsonArray>>
+  ): Weapon | undefined {
     // Get document data
     const data = document.payload.data();
 

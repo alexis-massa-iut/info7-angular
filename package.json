@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "pretty": "prettier --write \"./**/*.*\""
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "firebase": "^9.4.0",
+    "prettier": "^2.6.2",
     "rxfire": "^6.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

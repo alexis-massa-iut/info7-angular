@@ -4,41 +4,42 @@ import { Observable, of } from 'rxjs';
 import { Hero } from '../../data/hero';
 import { MessageService } from '../message/message.service';
 
-import { map } from "rxjs/operators";
-import { JsonArray } from "@angular/compiler-cli/ngcc/src/packages/entry_point";
+import { map } from 'rxjs/operators';
+import { JsonArray } from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {
   Action,
   AngularFirestore,
   AngularFirestoreDocument,
   DocumentChangeAction,
-  DocumentSnapshot
-} from "@angular/fire/compat/firestore";
+  DocumentSnapshot,
+} from '@angular/fire/compat/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeroService {
-
   // URL d'accès aux documents sur Firebase
   private static url = 'heroes';
 
-  constructor(private messageService: MessageService, private db: AngularFirestore) {
-  }
+  constructor(
+    private messageService: MessageService,
+    private db: AngularFirestore
+  ) {}
 
   /**
    * Récupération de la liste des héros
    */
   getHeroes(): Observable<Hero[]> {
-
     //
     this.messageService.add('HeroService: fetched heroes');
 
     //
-    return this.db.collection<JsonArray>(HeroService.url)
+    return this.db
+      .collection<JsonArray>(HeroService.url)
       .snapshotChanges()
       .pipe(
-        map(documents => {
-          return documents.map(document => {
+        map((documents) => {
+          return documents.map((document) => {
             return this.transformDocumentChangeActionToHero(document);
           });
         })
@@ -49,16 +50,16 @@ export class HeroService {
    * Récupération des 3 premiers héros
    */
   getHeroesTop3(): Observable<Hero[]> {
-
     //
     this.messageService.add('HeroService: fetched heroes');
 
     //
-    return this.db.collection<JsonArray>(HeroService.url, ref => ref.limit(3))
+    return this.db
+      .collection<JsonArray>(HeroService.url, (ref) => ref.limit(3))
       .snapshotChanges()
       .pipe(
-        map(documents => {
-          return documents.map(document => {
+        map((documents) => {
+          return documents.map((document) => {
             return this.transformDocumentChangeActionToHero(document);
           });
         })
@@ -71,7 +72,6 @@ export class HeroService {
    * @private
    */
   private getHeroDocument(id: string): AngularFirestoreDocument<JsonArray> {
-
     // return document
     return this.db.doc<JsonArray>(HeroService.url + `/` + id);
   }
@@ -81,14 +81,14 @@ export class HeroService {
    * @param id
    */
   getHero(id: string): Observable<Hero | undefined> {
-
     //
     this.messageService.add(`HeroService: fetched hero id=${id}`);
 
     // Return hero observable
-    return this.getHeroDocument(id).snapshotChanges()
+    return this.getHeroDocument(id)
+      .snapshotChanges()
       .pipe(
-        map(document => {
+        map((document) => {
           return this.transformDocumentSnapshotToHero(id, document);
         })
       );
@@ -128,8 +128,9 @@ export class HeroService {
    * @param a
    * @private
    */
-  private transformDocumentChangeActionToHero(a: DocumentChangeAction<JsonArray>): Hero {
-
+  private transformDocumentChangeActionToHero(
+    a: DocumentChangeAction<JsonArray>
+  ): Hero {
     // Get document data
     const data = a.payload.doc.data();
 
@@ -147,8 +148,10 @@ export class HeroService {
    * Transformation du document reçu en un objet de type Hero
    * @private
    */
-  private transformDocumentSnapshotToHero(id: string, document: Action<DocumentSnapshot<JsonArray>>): Hero | undefined {
-
+  private transformDocumentSnapshotToHero(
+    id: string,
+    document: Action<DocumentSnapshot<JsonArray>>
+  ): Hero | undefined {
     // Get document data
     const data = document.payload.data();
 
