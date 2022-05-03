@@ -33,7 +33,7 @@
             name="weapon-hp"
             type="number"
             [(ngModel)]="weapon.hp"
-            placeholder="5"
+            placeholder="0"
           />
           <button
             type="button"
@@ -63,7 +63,7 @@
             name="weapon-damage"
             type="number"
             [(ngModel)]="weapon.damage"
-            placeholder="5"
+            placeholder="0"
           />
           <button
             type="button"
@@ -93,7 +93,7 @@
             name="weapon-dexterity"
             type="number"
             [(ngModel)]="weapon.dexterity"
-            placeholder="5"
+            placeholder="0"
           />
           <button
             type="button"
@@ -123,7 +123,7 @@
             name="weapon-attack"
             type="number"
             [(ngModel)]="weapon.attack"
-            placeholder="5"
+            placeholder="0"
           />
           <button
             type="button"
@@ -141,7 +141,7 @@
           <p>
             Points assignés :
             <strong
-              [ngClass]="{ 
+              [ngClass]="{
                 'text-success': this.checkStats() == true,
                 'text-danger': this.checkStats() == false
               }"

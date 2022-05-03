@@ -76,20 +76,10 @@ export class WeaponDetailComponent implements OnInit {
   changeStat(changedStat: string, newValue: number): void {
     if (newValue < -5 || newValue > 5) return;
     if (this.weapon != undefined) {
-      switch (changedStat) {
-        case "attack":
-          if (this.weapon.attack) this.weapon.attack = newValue;
-          break;
-        case "dexterity":
-          if (this.weapon.dexterity) this.weapon.dexterity = newValue;
-          break;
-        case "hp":
-          if (this.weapon.hp) this.weapon.hp = newValue;
-          break;
-        case "damage":
-          if (this.weapon.damage) this.weapon.damage = newValue;
-          break;
-      }
+      if (changedStat == 'attack') this.weapon.attack = newValue;
+      else if (changedStat == 'dexterity') this.weapon.dexterity = newValue;
+      else if (changedStat == 'hp') this.weapon.hp = newValue;
+      else if (changedStat == 'damage') this.weapon.damage = newValue;
     }
     this.checkStats();
   }
@@ -105,10 +95,10 @@ export class WeaponDetailComponent implements OnInit {
     if (Number(this.getTotalStats()) != this.maxStat) return false; // Too many points assigned
 
     //* These should never happen
-    if (this.weapon.attack < -5 || this.weapon.attack > 5) return false; // Too little attack
-    if (this.weapon.dexterity < -5 || this.weapon.dexterity > 5) return false; // Too little dexterity
-    if (this.weapon.hp < -5 || this.weapon.hp > 5) return false; // Too little hp
-    if (this.weapon.damage < -5 || this.weapon.damage > 5) return false; // Too little damage
+    if (this.weapon.attack < -5 || this.weapon.attack > 5) return false; // Too little / much attack
+    if (this.weapon.dexterity < -5 || this.weapon.dexterity > 5) return false; // Too little / much dexterity
+    if (this.weapon.hp < -5 || this.weapon.hp > 5) return false; // Too little / much hp
+    if (this.weapon.damage < -5 || this.weapon.damage > 5) return false; // Too little / much damage
 
     return true; // No error
   }
